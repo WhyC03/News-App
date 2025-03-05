@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:news_app/constants/theme.dart';
 import 'package:news_app/home/screens/home_screen.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'News App',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,

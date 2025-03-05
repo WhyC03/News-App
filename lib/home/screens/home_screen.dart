@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/colors.dart';
+import 'package:news_app/home/widgets/navigation_bar.dart';
 import 'package:news_app/home/widgets/news_tile.dart';
 import 'package:news_app/home/widgets/trending_news_card.dart';
 
@@ -15,6 +16,8 @@ class HomeScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: MyBottomNav(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(15),
