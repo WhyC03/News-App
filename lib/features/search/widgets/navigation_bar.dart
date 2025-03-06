@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_app/home/controller/bottom_navigation_controller.dart';
+import 'package:news_app/features/home/controller/bottom_navigation_controller.dart';
 
 class MyBottomNav extends StatelessWidget {
   const MyBottomNav({super.key});
@@ -28,8 +28,8 @@ class MyBottomNav extends StatelessWidget {
                     controller.index.value = 0;
                   },
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.bounceOut,
+                    duration: Duration(milliseconds: 250),
+                    curve: Curves.bounceInOut,
                     height: 40,
                     width: 40,
                     padding: EdgeInsets.all(5),
@@ -57,8 +57,8 @@ class MyBottomNav extends StatelessWidget {
                     controller.index.value = 1;
                   },
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.bounceOut,
+                    duration: Duration(milliseconds: 250),
+                    curve: Curves.bounceInOut,
                     height: 40,
                     width: 40,
                     padding: EdgeInsets.all(5),
@@ -86,8 +86,8 @@ class MyBottomNav extends StatelessWidget {
                     controller.index.value = 2;
                   },
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.bounceOut,
+                    duration: Duration(milliseconds: 250),
+                    curve: Curves.bounceInOut,
                     height: 40,
                     width: 40,
                     padding: EdgeInsets.all(5),
