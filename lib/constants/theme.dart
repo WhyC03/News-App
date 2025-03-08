@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/colors.dart';
+import 'package:intl/intl.dart';
 
 var lightTheme = ThemeData(
   useMaterial3: true,
@@ -150,3 +151,22 @@ var darkTheme = ThemeData(
     ),
   ),
 );
+
+String formatDateTime(String dateTimeString) {
+  DateTime dateTime = DateTime.parse(dateTimeString);
+  DateTime now = DateTime.now();
+  Duration difference = now.difference(dateTime);
+
+  if (difference.inDays == 0) {
+    if (difference.inHours == 0) {
+      return '${difference.inMinutes} minutes ago';
+    }
+    return '${difference.inHours} hours ago';
+  } else if (difference.inDays == 1) {
+    return 'Yesterday';
+  } else if (difference.inDays < 7) {
+    return '${difference.inDays} days ago';
+  } else {
+    return DateFormat('MMM d, yyyy').format(dateTime);
+  }
+}

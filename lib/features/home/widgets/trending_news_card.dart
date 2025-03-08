@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/constants/theme.dart';
 
 class TrendingNewsCard extends StatelessWidget {
   final String imageUrl;
@@ -18,6 +19,7 @@ class TrendingNewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedTime = formatDateTime(time);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -53,7 +55,7 @@ class TrendingNewsCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 Text(
-                  time,
+                  formattedTime,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ],
@@ -81,7 +83,12 @@ class TrendingNewsCard extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
                 SizedBox(width: 10),
-                Text(author),
+                Flexible(
+                  child: Text(
+                    author,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 10),
