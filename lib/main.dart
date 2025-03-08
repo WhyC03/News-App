@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/constants/theme.dart';
-import 'package:news_app/features/home/controller/home_page_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:news_app/features/auth/screens/auth_screen.dart';
+import 'package:news_app/features/home/controller/home_page_controller.dart';
+import 'package:news_app/features/splash/screens/splash_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +26,13 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       themeMode: ThemeMode.system,
       darkTheme: darkTheme,
-      home: HomePageController(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => SplashScreen()),
+        GetPage(name: '/auth-screen', page: () => AuthScreen()),
+        GetPage(name: '/home-screen', page: () => HomePageController()),
+      ],
+     
     );
   }
 }

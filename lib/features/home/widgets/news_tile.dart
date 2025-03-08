@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/theme.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class NewsTile extends StatelessWidget {
   final String imageUrl;
@@ -18,7 +19,7 @@ class NewsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final formattedTime = formatDateTime(time);
+    final formattedTime = formatDateTime(time);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -39,9 +40,13 @@ class NewsTile extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  imageUrl,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
                   fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

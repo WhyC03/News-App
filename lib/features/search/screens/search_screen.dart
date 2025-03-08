@@ -11,31 +11,51 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NewsController newsController = Get.put(NewsController());
+    TextEditingController searchController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              SearchWidget(),
+              SearchWidget(
+                searchController: searchController,
+              ),
               SizedBox(height: 20),
               Obx(
-                () => Column(
-                  children: newsController.newsForYouList
-                      .map(
-                        (e) => NewsTile(
-                          imageUrl: e.urlToImage ??
-                              'https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2025/03/03/cover-18_1741018456.gif',
-                          time: e.publishedAt!,
-                          title: e.title!,
-                          author: e.author ?? 'Unknown',
-                          onTap: () {
-                            Get.to(() => ArticleDetailsScreen(news: e));
-                          },
-                        ),
+                () => searchController.text.isEmpty
+                    ? Column(
+                        children: newsController.newsForYou5
+                            .map(
+                              (e) => NewsTile(
+                                imageUrl: e.urlToImage ??
+                                    'https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2025/03/03/cover-18_1741018456.gif',
+                                time: e.publishedAt!,
+                                title: e.title!,
+                                author: e.author ?? 'Unknown',
+                                onTap: () {
+                                  Get.to(() => ArticleDetailsScreen(news: e));
+                                },
+                              ),
+                            )
+                            .toList(),
                       )
-                      .toList(),
-                ),
+                    : Column(
+                        children: newsController.searchNewsList
+                            .map(
+                              (e) => NewsTile(
+                                imageUrl: e.urlToImage ??
+                                    'https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2025/03/03/cover-18_1741018456.gif',
+                                time: e.publishedAt!,
+                                title: e.title!,
+                                author: e.author ?? 'Unknown',
+                                onTap: () {
+                                  Get.to(() => ArticleDetailsScreen(news: e));
+                                },
+                              ),
+                            )
+                            .toList(),
+                      ),
               ),
             ],
           ),

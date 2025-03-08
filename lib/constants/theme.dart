@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/constants/colors.dart';
 import 'package:intl/intl.dart';
+import 'package:news_app/constants/colors.dart';
 
 var lightTheme = ThemeData(
   useMaterial3: true,

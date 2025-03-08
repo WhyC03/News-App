@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:news_app/constants/colors.dart';
 import 'package:news_app/features/article/screens/article_display_screen.dart';
+import 'package:news_app/features/auth/controller/auth_controller.dart';
 import 'package:news_app/features/common_controllers/news_controller.dart';
 import 'package:news_app/features/home/widgets/news_tile.dart';
 import 'package:news_app/features/home/widgets/news_tile_loading.dart';
@@ -14,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NewsController newsController = Get.put(NewsController());
+    AuthController authController = Get.put(AuthController());
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -44,8 +47,13 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                        newsController.getNewsForYou();
+                      onTap: () async {
+                        final googleSignIn = GoogleSignIn();
+                        if (await googleSignIn.isSignedIn()) {
+                          await authController.googleSignOut();
+                        } else {
+                          await authController.signOut();
+                        }
                       },
                       child: Container(
                         width: 50,

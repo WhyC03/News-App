@@ -18,3 +18,4 @@ const darkLabelColor = Color(0xff9e9e9e);
 const greenColor = Color(0xff00d254);
 const paymentModeColor = Color(0xff8583ff);
 const paymentResionColor = Color(0xff00d254);
+const dSecondaryColor = Color(0xffff9900);

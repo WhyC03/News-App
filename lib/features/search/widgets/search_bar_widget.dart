@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:news_app/features/common_controllers/news_controller.dart';
 
 class SearchWidget extends StatelessWidget {
-  const SearchWidget({super.key});
+  final TextEditingController searchController;
+  const SearchWidget({super.key, required this.searchController});
 
   @override
   Widget build(BuildContext context) {
     NewsController newsController = Get.put(NewsController());
-    TextEditingController searchController = TextEditingController();
+
     return Container(
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
