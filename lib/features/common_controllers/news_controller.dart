@@ -124,13 +124,14 @@ class NewsController extends GetxController {
           );
         }
         teslaNews5 = teslaNewsList.sublist(0, 5).obs;
+        log(teslaNewsList.toString());
       } else {
         log("SomeThing went Wrong in Tesla News");
+        log(response.statusCode.toString());
       }
     } catch (e) {
       log(e.toString());
     }
-
     isTeslaLoading.value = false;
   }
 

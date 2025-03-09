@@ -46,15 +46,40 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    InkWell(
-                      onTap: () async {
-                        final googleSignIn = GoogleSignIn();
-                        if (await googleSignIn.isSignedIn()) {
-                          await authController.googleSignOut();
-                        } else {
-                          await authController.signOut();
-                        }
-                      },
+                    PopupMenuButton(
+                      position: PopupMenuPosition.under,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      itemBuilder: (BuildContext context) => [
+                        PopupMenuItem(
+                          child: ListTile(
+                            leading: Icon(Icons.brightness_6),
+                            title: Text('Change Theme'),
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                          onTap: () {
+                            Get.changeThemeMode(
+                              Get.isDarkMode ? ThemeMode.light : ThemeMode.dark,
+                            );
+                          },
+                        ),
+                        PopupMenuItem(
+                          child: ListTile(
+                            leading: Icon(Icons.logout),
+                            title: Text('Logout'),
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                          onTap: () async {
+                            final googleSignIn = GoogleSignIn();
+                            if (await googleSignIn.isSignedIn()) {
+                              await authController.googleSignOut();
+                            } else {
+                              await authController.signOut();
+                            }
+                          },
+                        ),
+                      ],
                       child: Container(
                         width: 50,
                         height: 50,

@@ -17,8 +17,8 @@ class AuthController extends GetxController {
     String email,
     String password,
   ) async {
-    isLoading1.value == true;
     try {
+      isLoading1.value == true;
       await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -29,16 +29,22 @@ class AuthController extends GetxController {
       log(auth.currentUser!.uid);
 
       Get.offAllNamed('/home-screen');
+      isLoading1.value = false;
     } on FirebaseAuthException catch (e) {
+      isLoading1.value = false;
       if (e.code == 'weak-password') {
         log("The password provided is too weak");
       } else if (e.code == 'email-already-in-use') {
         log("User with this email exist!!");
+        Get.snackbar(
+          'Error',
+          'User with this email exist!!',
+          snackPosition: SnackPosition.TOP,
+        );
       }
     } catch (e) {
       log(e.toString());
     }
-    isLoading1.value == false;
   }
 
   Future<void> signIn(String email, String password) async {
@@ -59,6 +65,11 @@ class AuthController extends GetxController {
       );
     } catch (e) {
       log(e.toString());
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.TOP,
+      );
     }
   }
 
