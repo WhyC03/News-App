@@ -93,6 +93,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
+                // Latest News
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -149,6 +150,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
+                // News For You
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -205,6 +207,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                 ),
                 SizedBox(height: 20),
+                // // Tesla News
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -261,6 +264,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                 ),
                 SizedBox(height: 10),
+                // Apple News
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -317,6 +321,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
+                // Business News
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

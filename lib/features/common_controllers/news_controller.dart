@@ -111,7 +111,7 @@ class NewsController extends GetxController {
   Future<void> getTeslaNews() async {
     isTeslaLoading.value = true;
     var baseURL =
-        'https://newsapi.org/v2/everything?q=tesla&from=2025-02-08&sortBy=publishedAt&apiKey=$apiKey';
+        'https://newsapi.org/v2/everything?q=tesla&from=2025-02-09&sortBy=publishedAt&apiKey=$apiKey';
 
     try {
       var response = await http.get(Uri.parse(baseURL));
@@ -124,7 +124,6 @@ class NewsController extends GetxController {
           );
         }
         teslaNews5 = teslaNewsList.sublist(0, 5).obs;
-        log(teslaNewsList.toString());
       } else {
         log("SomeThing went Wrong in Tesla News");
         log(response.statusCode.toString());
@@ -162,7 +161,8 @@ class NewsController extends GetxController {
 
   Future<void> searchNews(String search) async {
     isSearchLoading.value = true;
-    var baseURL = 'https://newsapi.org/v2/everything?q=$search&apiKey=$apiKey';
+    var baseURL =
+        'https://newsapi.org/v2/everything?q=$search&apiKey=$apiKey';
 
     try {
       var response = await http.get(Uri.parse(baseURL));
@@ -179,9 +179,12 @@ class NewsController extends GetxController {
           if (i == 10) {
             break;
           }
+          log(response.body);
         }
+      
       } else {
         log("SomeThing went Wrong in Searching News");
+        log(response.body);
       }
     } catch (e) {
       log(e.toString());

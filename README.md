@@ -1,16 +1,41 @@
-# news_app
+# NewsWave
 
-A new Flutter project.
+A New App for Reading News.
 
-## Getting Started
+### Prerequisites
+- [NewsAPI Key](https://newsapi.org/)
 
-This project is a starting point for a Flutter application.
+### Setup
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/news_app.git
+   cd news_app
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Add your NewsAPI Key:
+   - Open the `news_controller.dart` file located in `lib/controllers/`.
+   - Replace `YOUR_API_KEY` with your actual API key from NewsAPI Website.
+     ```dart
+     // filepath: d:\Flutter Projects\news_app\lib\controllers\news_controller.dart
+     // ...existing code...
+     final String apiKey = 'YOUR_API_KEY';
+     // ...existing code...
+     ```
+
+### Running the App
+
+1. Connect your device or start an emulator.
+2. Run the app:
+   ```sh
+   flutter run
+   ```
+
+### Resources
+
+NewsApi Website Link- (https://newsapi.org/)

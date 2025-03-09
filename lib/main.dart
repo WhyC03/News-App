@@ -3,15 +3,19 @@ import 'package:get/get.dart';
 import 'package:news_app/constants/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:news_app/features/auth/screens/auth_screen.dart';
+import 'package:news_app/features/fcm/firebase_api.dart';
 import 'package:news_app/features/home/controller/home_page_controller.dart';
 import 'package:news_app/features/splash/screens/splash_screen.dart';
 import 'firebase_options.dart';
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseApi().initNotifications();
   runApp(const MyApp());
 }
 
@@ -26,13 +30,13 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       themeMode: ThemeMode.system,
       darkTheme: darkTheme,
+      navigatorKey: navigatorKey,
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
         GetPage(name: '/auth-screen', page: () => AuthScreen()),
         GetPage(name: '/home-screen', page: () => HomePageController()),
       ],
-     
     );
   }
 }
